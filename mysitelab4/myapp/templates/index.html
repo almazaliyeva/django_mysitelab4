@@ -1,0 +1,243 @@
+<!doctype html>
+
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foodieland — Recipes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6fbfc;
+      --card:#e9fbff;
+      --accent:#e6f7ff;
+      --text:#0f1720;
+      --muted:#6b7280;
+      --primary:#0f766e;
+      --rounded:18px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.3}
+    .container{max-width:1100px;margin:0 auto;padding:36px 20px}
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-weight:700;font-size:20px}
+    .header-right{display:flex;align-items:center;gap:30px;}
+    .social-icons a{color:var(--text);font-size:18px;margin-left:12px;text-decoration:none;}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+
+    /* Categories */
+    .categories{display:flex;gap:18px;align-items:center;padding:26px 0}
+    .cat{background:linear-gradient(180deg,#ffffff 0%, #f6fcff 100%);padding:18px;border-radius:16px;display:flex;flex-direction:column;align-items:center;min-width:110px;box-shadow:0 6px 18px rgba(15,23,32,0.04)}
+    .cat img{width:54px;height:54px;object-fit:contain;border-radius: 50%;} /* Nümunəyə uyğun olaraq dairəvi şəkillər */
+    .cat span{margin-top:10px;font-weight:600;color:var(--muted)}
+    .view-all{margin-left:auto;background:#e8fbff;padding:12px 16px;border-radius:12px;color:var(--primary);font-weight:700}
+
+    /* Hero */
+    .hero{text-align:center;padding:36px 20px}
+    .hero h1{font-size:32px;margin:8px 0 12px}
+    .hero p{color:var(--muted);max-width:700px;margin:0 auto}
+
+    /* Cards grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;padding:28px 0}
+    .card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,32,0.06);position:relative}
+    .card .media{height:180px;background:#ddd;overflow:hidden}
+    .card .media img{width:100%;height:100%;object-fit:cover;display:block}
+    .fav{position:absolute;right:12px;top:12px;background:#fff;border-radius:999px;padding:8px;box-shadow:0 6px 16px rgba(2,6,23,0.08);color:var(--primary);font-weight:700;}
+    .card .body{padding:14px}
+    .card h3{font-size:15px;margin:0 0 8px}
+    .meta{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:13px}
+    .meta svg{width:14px;height:14px}
+
+    /* Newsletter */
+    .newsletter{background:var(--accent);border-radius:18px;padding:34px;margin-top:36px;display:flex;gap:20px;align-items:center;position:relative;overflow:hidden;}
+    .newsletter .left{flex:1;z-index:1;}
+    .newsletter h2{margin:0 0 8px;text-align:left}
+    .newsletter p{color:var(--muted);margin:0 0 14px}
+    .subscribe{display:flex;gap:10px}
+    .subscribe input{flex:1;padding:14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);min-width: 200px;}
+    .subscribe button{padding:12px 18px;border-radius:999px;border:none;background:var(--text);color:#fff;font-weight:700}
+    .newsletter .visual-assets{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;}
+    .newsletter .visual-assets img.left-asset{position:absolute;left:-50px;top:50%;transform:translateY(-50%);height:200px;opacity:0.8;}
+    .newsletter .visual-assets img.right-asset{position:absolute;right:-50px;top:50%;transform:translateY(-50%);height:250px;opacity:0.8;}
+
+    footer{padding:36px 0;color:var(--muted);font-size:14px}
+
+    /* Responsive tweaks */
+    @media (max-width:850px){
+      .header-right{flex-direction: column; align-items: flex-end;}
+      .social-icons{margin-top: 10px;}
+      .newsletter .visual-assets img.left-asset{display: none;}
+      .newsletter .visual-assets img.right-asset{opacity: 0.3;}
+    }
+    @media (max-width:620px){
+      .categories{overflow:auto;padding-bottom:12px}
+      .cat{min-width:88px}
+      .hero h1{font-size:22px}
+      .newsletter{flex-direction:column;align-items:stretch}
+      .subscribe{flex-direction: column;}
+      .subscribe input, .subscribe button{min-width: auto;}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">Foodieland</div>
+      <div class="header-right">
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Recipes</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+          <a href="#">About</a>
+        </nav>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter">t</a>
+          <a href="#" aria-label="Instagram">i</a>
+        </div>
+      </div>
+    </header>
+    <section class="categories">
+      <div class="cat">
+        <img src="https://www.eatingwell.com/thmb/_G_wcOvKcnl7WQ11FnFfpAWejD4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/EW-LWWD-June-Cottage-Cheese-Toast-04-Loose-1x1-d676ac94e7764605b312941b3c672f4b.jpg" alt="breakfast">
+        <span>Breakfast</span>
+      </div>
+      <div class="cat">
+        <img src="https://vancouverwithlove.com/wp-content/uploads/2023/05/high-protein-avocado-toast-featured.jpg" alt="vegan">
+        <span>Vegan</span>
+      </div>
+      <div class="cat">
+        <img src="https://images.immediate.co.uk/production/volatile/sites/30/2024/06/Red-meat440-980233e.jpg?quality=90&resize=440,400" alt="meat">
+        <span>Meat</span>
+      </div>
+      <div class="cat">
+        <img src="https://creamone.com/wp-content/uploads/2023/07/chocolate-kinder-cake.png.webp" alt="dessert">
+        <span>Dessert</span>
+      </div>
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400&auto=format&fit=crop" alt="lunch">
+        <span>Lunch</span>
+      </div>
+      <div class="cat">
+        <img src="https://kirbiecravings.com/wp-content/uploads/2024/12/2-ingredient-candy-bars.jpg" alt="chocolate">
+        <span>Chocolate</span>
+      </div>
+      <div class="view-all">View All Categories</div>
+    </section>
+
+    <section class="hero">
+      <h1>Simple and tasty recipes</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim</p>
+    </section>
+
+    <section class="grid" aria-label="recipes">
+      <article class="card">
+        <div class="media"><img src="https://i2-prod.dailyrecord.co.uk/article24533483.ece/ALTERNATES/s1200c/0_mcspicyjpeg.jpg" alt="a delicious stacked burger"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Big and Juicy Chickenburger</h3>
+          <div class="meta"><span>30 Minutes</span><span>•</span><span>Snack</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://www.eatingwell.com/thmb/dQ8ZFR8URdyb43R_2pBxNmHcKyU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/6598209-3bd22ff811b94d2280a1fa3fe5bde621.jpg" alt="fresh lime roasted salmon"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Fresh Lime Roasted Salmon with Ginger Sauce</h3>
+          <div class="meta"><span>30 Minutes</span><span>•</span><span>Fish</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://www.krusteaz.com/wp-content/uploads/2025/06/Oatmeal-Pancakes.jpg" alt="strawberry oatmeal pancake"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Strawberry Oatmeal Pancake with Honey Syrup</h3>
+          <div class="meta"><span>30 Minutes</span><span>•</span><span>Breakfast</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://www.recipesfromeurope.com/wp-content/uploads/2023/12/mimosa-salad-layered-tuna-salad-recipe-og-1.jpg" alt="fresh and healthy mixed salad"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Fresh and Healthy Mixed Mayonnaise Salad</h3>
+          <div class="meta"><span>30 Minutes</span><span>•</span><span>Healthy</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://chefjar.com/wp-content/uploads/2020/07/chicken-meatball-recipe-4-1-500x375.jpg" alt="chicken meatballs"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Chicken Meatballs with Cream Cheese</h3>
+          <div class="meta"><span>30 Minutes</span><span>•</span><span>Meat</span></div>
+        </div>
+      </article>
+
+      <article class="card" style="background: #e1f4e1; text-align: center;">
+        <div class="media" style="height: 180px; background: #e1f4e1; display: flex; justify-content: center; align-items: center;">
+          <img src="https://i.pinimg.com/736x/eb/bb/a3/ebbba33653d9c6ec1d32e4a964dcc7eb.jpg" alt="Don't forget to eat healthy food" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
+        </div>
+        <div class="body">
+          <h3>Don't forget to eat healthy food</h3>
+          <div class="meta" style="justify-content: center;"><span>—</span><span>•</span><span>Note</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://www.straight.com/files/v3/styles/gs_standard/public/images/21/01/blueberrypancakes8_0.jpg?itok=tME5WDE6" alt="fruity pancake"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>Fruity Pancake with Orange & Blueberry</h3>
+          <div class="meta"><span>35 Minutes</span><span>•</span><span>Dessert</span></div>
+        </div>
+      </article>
+      
+      <article class="card">
+        <div class="media"><img src="https://www.thespruceeats.com/thmb/_JsWPTIIvL9hvlnkyrqCfjzJf34=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/hainanese-chicken-rice-very-detailed-recipe-3030408-hero-01-91c4d305f0ae400198cf7c63d8b7261f.jpg"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>The Best Easy One Pot Chicken and Rice</h3>
+          <div class="meta"><span>45 Minutes</span><span>•</span><span>Dinner</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="https://www.theburntbuttertable.com/wp-content/uploads/2025/09/Chicken-and-bacon-pasta-card.jpg" alt="creamy chicken and bacon pasta"></div>
+        <div class="fav">♥</div>
+        <div class="body">
+          <h3>The Creamiest Creamy Chicken and Bacon Pasta</h3>
+          <div class="meta"><span>40 Minutes</span><span>•</span><span>Pasta</span></div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="newsletter">
+      <div class="visual-assets">
+        <img class="left-asset" src="https://images.unsplash.com/photo-1497914041728-6469a9b703e2?q=80&w=200&auto=format&fit=crop" alt="fresh herbs">
+        <img class="right-asset" src="https://images.unsplash.com/photo-1547496502-eee59b736712?q=80&w=300&auto=format&fit=crop" alt="egg salad">
+      </div>
+      <div class="left">
+        <h2>Deliciousness to your inbox</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim</p>
+        <div class="subscribe">
+          <input type="email" placeholder="Your email address..." aria-label="email">
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p style="text-align:center;margin-top:28px;">© Foodieland — All rights reserved</p>
+    </footer>
+
+  </div>
+</body>
+</html>
